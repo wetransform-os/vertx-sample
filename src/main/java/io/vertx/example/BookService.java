@@ -71,13 +71,13 @@ public class BookService {
 
   private void validateBook(JsonObject book) {
     if (!book.containsKey("isbn")) {
-      throw new IllegalStateException("Book must have a ISBN");
+      throw new IllegalStateException("Book must have an ISBN");
     }
     if (!book.containsKey("title")) {
       throw new IllegalStateException("Book must have a title");
     }
     if (!book.containsKey("author")) {
-      throw new IllegalStateException("Book must have a author");
+      throw new IllegalStateException("Book must have an author");
     }
   }
 
