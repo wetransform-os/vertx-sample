@@ -28,6 +28,7 @@ public class BookService {
     Router router = Router.router(vertx);
 
     router.route().handler(BodyHandler.create());
+    router.get("/").handler(this::getHello);
     router.get("/books").handler(this::getBooks);
     router.post("/books").handler(this::createBook);
     router.get("/books/isbn/:isbn").handler(this::getBookByIsbn);
@@ -42,6 +43,13 @@ public class BookService {
         System.err.println("Failed to listen on port 8080");
       }
     });
+  }
+
+  private void getHello(RoutingContext rc) {
+    rc.response()
+      .putHeader("content-type", "text/plain; charset=utf-8")
+      .setStatusCode(200)
+      .end("Hello world, I'm running...");
   }
 
   private void getBooks(RoutingContext rc) {
